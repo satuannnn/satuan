@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website profil pribadi Wahhaab Nuuru Al Hayyu, mahasiswa Politeknik Indonusa Surakarta.">
+  <title>Profil Wahhaab Nuuru Al Hayyu</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #2563eb;
+      --light-blue: #eaf2ff;
+      --purple: #7c3aed;
+      --text: #243247;
+      --muted: #64748b;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f8ff;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: rgba(255,255,255,.96);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 14px rgba(16,42,67,.08);
+    }
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .brand { font-weight: 800; color: var(--navy); letter-spacing: .3px; }
+    .brand span { color: var(--blue); }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 600;
+      margin-left: 20px;
+    }
+    nav a:hover { color: var(--blue); }
+    .hero {
+      background: linear-gradient(130deg, #102a43 0%, #1d4ed8 65%, #7c3aed 100%);
+      color: white;
+      padding: 82px 22px 88px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 50%;
+      width: 320px;
+      height: 320px;
+      right: -90px;
+      top: -90px;
+    }
+    .hero::after { width: 220px; height: 220px; right: 80px; top: 180px; }
+    .hero-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr .8fr;
+      gap: 44px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: .86rem;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.15; margin-bottom: 18px; }
+    .hero p { max-width: 600px; color: #e5edff; font-size: 1.08rem; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button {
+      display: inline-block;
+      padding: 11px 19px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-light { background: white; color: var(--blue); }
+    .button-outline { border: 1px solid rgba(255,255,255,.65); color: white; }
+    .avatar-card {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+    .avatar {
+      width: 150px; height: 150px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #dbeafe, #c4b5fd);
+      color: #1e3a8a;
+      display: grid;
+      place-items: center;
+      font-size: 3rem;
+      font-weight: 800;
+      border: 5px solid rgba(255,255,255,.7);
+    }
+    .avatar-card h2 { font-size: 1.2rem; margin-bottom: 5px; }
+    .avatar-card p { font-size: .92rem; color: #e5edff; }
+    section { max-width: 1000px; margin: auto; padding: 68px 22px; }
+    .section-heading { text-align: center; margin-bottom: 32px; }
+    .section-heading .kicker { color: var(--blue); font-weight: 800; text-transform: uppercase; font-size: .8rem; letter-spacing: 1.5px; }
+    .section-heading h2 { color: var(--navy); font-size: clamp(1.7rem, 3vw, 2.35rem); margin: 6px 0 10px; }
+    .section-heading p { color: var(--muted); max-width: 650px; margin: auto; }
+    .about-card, .info-card, .education-card {
+      background: white;
+      border: 1px solid #e4eaf5;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(16,42,67,.05);
+    }
+    .about-card { padding: 30px; font-size: 1.04rem; }
+    .about-card strong { color: var(--blue); }
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .info-card { padding: 23px; display: flex; gap: 15px; align-items: flex-start; }
+    .icon {
+      width: 48px; height: 48px; flex: 0 0 48px;
+      border-radius: 14px; display: grid; place-items: center;
+      background: var(--light-blue); font-size: 1.35rem;
+    }
+    .info-card h3 { color: var(--navy); font-size: 1rem; margin-bottom: 4px; }
+    .info-card p { color: var(--muted); font-size: .96rem; }
+    .education-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .education-card { padding: 25px; border-top: 4px solid var(--blue); }
+    .education-card .year { color: var(--blue); font-weight: 800; font-size: .82rem; text-transform: uppercase; letter-spacing: .8px; }
+    .education-card h3 { color: var(--navy); margin: 8px 0 5px; }
+    .education-card p { color: var(--muted); }
+    .closing {
+      max-width: none;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 55px 22px;
+    }
+    .closing h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 10px; }
+    .closing p { color: #dbeafe; max-width: 650px; margin: auto; }
+    footer { background: #0b1f33; color: #b8c8da; text-align: center; padding: 20px; font-size: .88rem; }
+    @media (max-width: 720px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      nav a { margin: 0 14px 0 0; display: inline-block; }
+      .hero { padding: 58px 20px 64px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .avatar-card { max-width: 360px; width: 100%; margin: auto; }
+      .info-grid, .education-list { grid-template-columns: 1fr; }
+      section { padding: 52px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Navigasi utama">
+      <div class="brand">PROFIL<span>KU.</span></div>
+      <div>
+        <a href="#tentang">Tentang</a>
+        <a href="#identitas">Identitas</a>
+        <a href="#pendidikan">Pendidikan</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda" style="max-width:none; margin:0;">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow">Mahasiswa Semester 1</span>
+          <h1>Halo, saya<br>Wahhaab Nuuru Al Hayyu</h1>
+          <p>Mahasiswa Politeknik Indonusa Surakarta yang sedang memulai perjalanan di bidang rekayasa perangkat lunak dan teknologi.</p>
+          <div class="hero-buttons">
+            <a class="button button-light" href="#tentang">Kenali Saya</a>
+            <a class="button button-outline" href="#pendidikan">Riwayat Pendidikan</a>
+          </div>
+        </div>
+        <div class="avatar-card">
+          <div class="avatar" aria-label="Inisial WN">WN</div>
+          <h2>Wahhaab Nuuru Al Hayyu</h2>
+          <p>Mahasiswa • Politeknik Indonusa Surakarta</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="section-heading">
+        <span class="kicker">Tentang Saya</span>
+        <h2>Perkenalan Singkat</h2>
+        <p>Sekilas tentang diri dan perjalanan pendidikan saya.</p>
+      </div>
+      <div class="about-card">
+        Perkenalkan, nama saya <strong>Wahhaab Nuuru Al Hayyu</strong>. Saya berasal dari <strong>Sragen, Jawa Tengah</strong>, dan saat ini merupakan mahasiswa semester 1 di <strong>Politeknik Indonusa Surakarta</strong>, jurusan <strong>Teknologi Rekayasa Perangkat Lunak</strong>. Saya merupakan alumni <strong>MAN 2 Sragen</strong>. Saat ini saya sedang memulai perjalanan sebagai mahasiswa dan ingin terus belajar, mengembangkan kemampuan, serta menambah pengalaman di bidang teknologi dan pemrograman.
+      </div>
+    </section>
+
+    <section id="identitas">
+      <div class="section-heading">
+        <span class="kicker">Data Diri</span>
+        <h2>Identitas Saya</h2>
+        <p>Informasi singkat mengenai profil pribadi dan pendidikan saya saat ini.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">👤</div>
+          <div><h3>Nama Lengkap</h3><p>Wahhaab Nuuru Al Hayyu</p></div>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">📍</div>
+          <div><h3>Asal Daerah</h3><p>Sragen, Jawa Tengah</p></div>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">🎓</div>
+          <div><h3>Perguruan Tinggi</h3><p>Politeknik Indonusa Surakarta</p></div>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">💻</div>
+          <div><h3>Jurusan</h3><p>Teknologi Rekayasa Perangkat Lunak</p></div>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">📚</div>
+          <div><h3>Semester</h3><p>Semester 1</p></div>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">🏫</div>
+          <div><h3>Asal Sekolah</h3><p>Alumni MAN 2 Sragen</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pendidikan">
+      <div class="section-heading">
+        <span class="kicker">Perjalanan Belajar</span>
+        <h2>Riwayat Pendidikan</h2>
+        <p>Dua tahap pendidikan yang menjadi bagian dari perjalanan belajar saya.</p>
+      </div>
+      <div class="education-list">
+        <article class="education-card">
+          <div class="year">Pendidikan Sebelumnya</div>
+          <h3>MAN 2 Sragen</h3>
+          <p>Alumni madrasah aliyah di Sragen, Jawa Tengah.</p>
+        </article>
+        <article class="education-card">
+          <div class="year">Pendidikan Saat Ini</div>
+          <h3>Politeknik Indonusa Surakarta</h3>
+          <p>Mahasiswa semester 1 jurusan Teknologi Rekayasa Perangkat Lunak.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>Terus Belajar, Terus Berkembang</h2>
+      <p>Saya percaya bahwa setiap proses adalah kesempatan untuk belajar, memperbaiki diri, dan membangun masa depan yang lebih baik.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Wahhaab Nuuru Al Hayyu. Website Profil Pribadi.</p>
+  </footer>
+</body>
+</html>
